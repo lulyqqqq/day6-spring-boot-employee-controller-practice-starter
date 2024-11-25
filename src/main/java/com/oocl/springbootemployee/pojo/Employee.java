@@ -1,7 +1,6 @@
 package com.oocl.springbootemployee.pojo;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 public class Employee {
     private Integer id;

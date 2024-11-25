@@ -86,7 +86,7 @@ class EmployeeControllerTest {
         //When
         //Then
         String employeesJSONString = client.perform(MockMvcRequestBuilders.get("/employees")
-                .param("gender", "MALE" ))
+                        .param("gender", "MALE"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(expectList.size())))
                 .andReturn().getResponse().getContentAsString();
@@ -104,8 +104,8 @@ class EmployeeControllerTest {
         //When
         //Then
         String employeeJson = client.perform(MockMvcRequestBuilders.post("/employees")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(json.write(employee).getJson()))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json.write(employee).getJson()))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andReturn().getResponse().getContentAsString();
         Employee returnedEmployee = json.parseObject(employeeJson);
@@ -123,8 +123,8 @@ class EmployeeControllerTest {
         //When
         //Then
         String employeeJson = client.perform(MockMvcRequestBuilders.put("/employees/" + employeeId)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(json.write(employee).getJson()))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json.write(employee).getJson()))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
@@ -153,8 +153,8 @@ class EmployeeControllerTest {
         //When
         //Then
         String employeesJSONString = client.perform(MockMvcRequestBuilders.get("/employees")
-                .param("page", "2")
-                .param("pageSize", "2"))
+                        .param("page", "2")
+                        .param("pageSize", "2"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(expectList.size())))
                 .andReturn().getResponse().getContentAsString();
@@ -164,6 +164,5 @@ class EmployeeControllerTest {
                 .usingRecursiveComparison()
                 .isEqualTo(expectList);
     }
-
 
 }
